@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use PhpParser\Node\Expr\New_;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -31,9 +32,22 @@ class AuthServiceProvider extends ServiceProvider
         // the User instance via an API token or any other method necessary.
 
         $this->app['auth']->viaRequest('api', function ($request) {
-            if ($request->input('api_token')) {
-                return User::where('api_token', $request->input('api_token'))->first();
+
+            // $token = "1234567890";
+
+            // $header = $request->header('Api-Token');
+
+            // if ($header && $header== $token) {
+            //     return new User();
+            // }
+
+            // return null;
+
+            if ($request->header('api_token')) {
+                return User::where('api_token', $request->header('api_token'))->first();
             }
+
+            return null;
         });
     }
 }

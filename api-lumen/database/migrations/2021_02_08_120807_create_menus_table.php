@@ -15,10 +15,10 @@ class CreateMenusTable extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->increments('idmenu');
-            $table->integer('idkategori');
+            $table->bigInteger('idkategori');
             $table->string('menu');
             $table->string('gambar');
-            $table->float('harga');
+            $table->bigInteger('harga');
             $table->timestamps();
         });
     }

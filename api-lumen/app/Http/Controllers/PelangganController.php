@@ -28,8 +28,13 @@ class PelangganController extends Controller
     public function create(Request $request)
     {
         //
-        Pelanggan::create($request->all());
-        return response()->json('data sudah dimasukkan');
+        $this->validate($request,[
+            'pelanggan'=>'required',
+            'alamat'=>'required',
+            'telp'=>'required | numeric'
+        ]);
+        $pelanggan=Pelanggan::create($request->all());
+        return response()->json($pelanggan);
     }
 
     /**
@@ -75,9 +80,11 @@ class PelangganController extends Controller
      * @param  \App\Models\Pelanggan  $pelanggan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pelanggan $pelanggan)
+    public function update(Request $request,$id)
     {
         //
+        Pelanggan::where('idpelanggan',$id)->update($request->all());
+        return response()->json("data sudah diupdate");
     }
 
     /**

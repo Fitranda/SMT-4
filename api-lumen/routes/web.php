@@ -19,7 +19,10 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->group(['prefix' => 'api'], function () use ($router) {
+$router->post('api/register', [ 'uses' => 'LoginController@register']);
+$router->post('api/login', [ 'uses' => 'LoginController@login']);
+
+$router->group(['prefix' => 'api','middleware'=>'auth'], function () use ($router) {
     $router->get('kategori', [ 'uses' => 'KategoriController@index']);
 
     $router->get('kategori/{id}', ['uses' => 'KategoriController@show']);
@@ -38,4 +41,11 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('pelanggan', ['uses' => 'PelangganController@create']);
 
     $router->delete('pelanggan/{id}', ['uses' =>'PelangganController@destroy']);
+
+    $router->put('pelanggan/{id}', ['uses' => 'PelangganController@update']);
+
+
+    $router->post('menu', ['uses' => 'MenuController@create']);
+
+    $router->get('menu', [ 'uses' => 'MenuController@index']);
 });
