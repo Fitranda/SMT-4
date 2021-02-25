@@ -8,6 +8,6 @@ class Menu extends Model
 {
     //
     protected $fillable = [
-        'idkategori', 'menu','gambar','harga'
-      ];
+        'idkategori', 'menu', 'gambar', 'harga'
+    ];
 }
