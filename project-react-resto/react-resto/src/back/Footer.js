@@ -1,11 +1,11 @@
 import React from 'react';
 
-export const Nav = () => {
+const Footer = () => {
     return (
         <div>
-            <h1>Navbar</h1>
+            <p>Smk Revit.com</p>
         </div>
     );
 }
 
-export default Nav;
+export default Footer;
