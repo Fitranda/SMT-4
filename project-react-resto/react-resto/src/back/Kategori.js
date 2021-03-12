@@ -1,19 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { link } from "../axios/link";
 import { useForm } from "react-hook-form";
+import useGet from "../Hook/useGet";
 
 const Kategori = () => {
-  const [isi, setIsi] = useState([]);
+  // const [isi, setIsi] = useState([]);
   const [pesan, setpesan] = useState([]);
   const [idkategori, setidkategori] = useState([]);
   const [pilihan, setpilihan] = useState(true);
 
   const { register, handleSubmit, reset, errors, setValue } = useForm();
 
-  async function fetcData() {
-    const request = await link.get("/kategori");
-    setIsi(request.data);
-  }
+  // async function fetcData() {
+  //   const request = await link.get("/kategori");
+  //   setIsi(request.data);
+  // }
+  const [isi] = useGet('/kategori');
 
   function simpan(data) {
     if (pilihan) {
@@ -27,7 +29,7 @@ const Kategori = () => {
       setpilihan(true);
     }
 
-    fetcData();
+    // fetcData();
     reset();
   }
 
@@ -48,11 +50,11 @@ const Kategori = () => {
     setpilihan(false);
   }
 
-  fetcData();
+  // fetcData();
 
-  useEffect(() => {
-    fetcData();
-  }, []);
+  // useEffect(() => {
+  //   fetcData();
+  // }, [isi]);
 
   let no = 1;
 
