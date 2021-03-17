@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import Kategori from './Kategori';
 import Menu from './Menu';
+import Order from './Order';
 import Pelanggan from './Pelanggan';
 
 
@@ -18,6 +19,9 @@ const Content = () => {
     }
     if (isi === 'pelanggan') {
         tampil = <Pelanggan />
+    }
+    if (isi === 'order') {
+        tampil = <Order/>
     }
 
     return (
