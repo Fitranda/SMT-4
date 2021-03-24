@@ -1,9 +1,11 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import Detail from './Detail';
 import Kategori from './Kategori';
 import Menu from './Menu';
 import Order from './Order';
 import Pelanggan from './Pelanggan';
+import User from './User';
 
 
 const Content = () => {
@@ -22,6 +24,12 @@ const Content = () => {
     }
     if (isi === 'order') {
         tampil = <Order/>
+    }
+    if (isi === 'detail') {
+        tampil = <Detail/>
+    }
+    if (isi === 'user') {
+        tampil = <User/>
     }
 
     return (
